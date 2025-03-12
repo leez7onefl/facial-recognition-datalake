@@ -1,0 +1,12 @@
+# Ignore environment files
+keys.env
+
+# Ignore JSON configuration files
+red-freedom-426709-a7-6904e9a53b27.json
+
+# Ignore virtual environment directory
+datalakes-final-project-venv/
+
+# Ignore logs directory
+logs/
+leo_tests/

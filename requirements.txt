@@ -1,0 +1,17 @@
+google-cloud-storage
+numpy
+opencv-python
+Pillow
+pinecone
+matplotlib
+rembg
+onnxruntime
+tensorflow
+tk
+apache-airflow
+streamlit
+requests
+pandas
+keras
+flask
+python-dotenv
