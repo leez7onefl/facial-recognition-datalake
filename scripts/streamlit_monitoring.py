@@ -68,4 +68,3 @@ if st.button("Get All Data Layers"):
         st.subheader("Curated Data")
         response = get_pinecone_data(uuid + ".nbg.jpg")
         st.write(str(response))
-
