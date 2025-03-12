@@ -26,7 +26,7 @@ The second operation from staging to curated use a VGG16 model minus classificat
 
 ![image](https://github.com/user-attachments/assets/314c530f-c9b6-469c-885b-53c1f8bf5c1a)
 
-The ultimate goal of my pipeline is to be able to upload new pictures into the database, and be able to scan a picture to find the best already uploaded match. 
+The ultimate goal of my pipeline is to be able to upload new pictures into the database, and be able to ingest a picture to find the best match among the database.
 
 ## Project Structure
 
