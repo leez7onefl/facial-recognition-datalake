@@ -41,7 +41,7 @@ with col2:
     else:
         st.error("Failed to get stats")
 
-uuid = st.text_input("Enter UUID:", value="001_08194468")
+uuid = st.text_input("Enter UUID:", value="7d931715-1ef9-40a4-abbf-b1cab72b3453")
 
 if st.button("Get All Data Layers"):
     col1, col2, col3 = st.columns(3)
