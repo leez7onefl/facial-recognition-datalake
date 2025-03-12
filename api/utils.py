@@ -65,11 +65,9 @@ def get_curated_data(uuids=None):
         uuids = [uuids] 
 
     combined_ids = ["1_staging/" + uuid for uuid in uuids]
-    vector_response = index.fetch(ids=combined_ids, namespace="")
-    vector = vector_response
+    vector_response = index.fetch(ids=combined_ids)
+    return vector_response
 
-
-    return vector
 
 def check_health():
     health_info = {}

@@ -11,7 +11,7 @@ def get_image_data(type, uuid):
 
 def get_pinecone_data(uuid):
     response = requests.get(f"{BASE_URL}/curated?uuid={uuid}")
-    return response
+    return response.content
 
 def check_health():
     response = requests.get(f"{BASE_URL}/health")
@@ -41,14 +41,14 @@ with col2:
     else:
         st.error("Failed to get stats")
 
-uuid = st.text_input("Enter UUID:", value="001_08194468")
+uuid = st.text_input("Enter UUID:", value="09c30404-d209-485d-80d4-9bedb5a09a12")
 
 if st.button("Get All Data Layers"):
     col1, col2, col3 = st.columns(3)
 
     with col1:
         st.subheader("Raw Data")
-        response = get_image_data("raw", uuid + ".jpg")
+        response = get_image_data("raw", uuid)
         if response.status_code == 200:
             image = Image.open(BytesIO(response.content))
             st.image(image, caption='Raw Data Image', use_container_width=True)
@@ -57,7 +57,7 @@ if st.button("Get All Data Layers"):
 
     with col2:
         st.subheader("Staging Data")
-        response = get_image_data("staging", uuid + ".out.jpg")
+        response = get_image_data("staging", uuid + ".nbg.jpg")
         if response.status_code == 200:
             image = Image.open(BytesIO(response.content))
             st.image(image, caption='Staging Data Image', use_container_width=True)
@@ -66,5 +66,6 @@ if st.button("Get All Data Layers"):
 
     with col3:
         st.subheader("Curated Data")
-        response = get_pinecone_data(uuid + ".out.jpg")
-        st.write(str(response.content))
+        response = get_pinecone_data(uuid + ".nbg.jpg")
+        st.write(str(response))
+
