@@ -6,7 +6,7 @@ This repository contains the final project for the Data Lakes & Data Integration
 
 ## Project Overview
 
-The objective of this project is to design and implement a complete data lake solution, from data ingestion to API exposure. The base dataset is constitued of 1800 pictures of pictures of about a dozen different celebrities. 
+The objective of this project is to design and implement a complete data lake solution, from data ingestion to API exposure. [The base dataset](https://www.kaggle.com/datasets/vishesh1412/celebrity-face-image-dataset) is constitued of 1800 pictures of pictures of eighteen different celebrities. 
 
 The datalake have three layer : "raw", "staging" and "curated". 
 - The raw layer contains all images, stored in a Google Blob Storage Bucket. 
@@ -79,6 +79,7 @@ ___
 - Apache Airflow
 - Streamlit
 
+___
 ### Installation
 
 1. Clone the repository:
@@ -96,12 +97,21 @@ ___
 
 4. Put your Google Storage JSON access credentials at root
 
+___
 ### Run Streamlit App
 
 In order to get the best experience, please prefer the use of the streamlit application. 
 ```bash
 launch_streamlit.bat
 ```
+
+#### The streamlit UI contain three pages : 
+
+![image](https://github.com/user-attachments/assets/9a3bddb0-1b63-4d5d-b5c0-e78228b57a66)
+
+
+
+___
 
 #### Execute Pipelines
 
