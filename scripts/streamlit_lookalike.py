@@ -19,15 +19,12 @@ index = pinecone.Index('datalakes-ing3-curated')
 
 st.header("Who is My Lookalike?")
 
-file_path = st.file_uploader("A superb picture of you:", accept_multiple_files=False, label_visibility="visible")
+file_path = st.file_uploader("", accept_multiple_files=False, label_visibility="visible")
 
 if st.button("Submit"):
     if file_path is not None:
-        # Open and resize the image to 244x244
         image = Image.open(file_path)
         image = image.resize((244, 244))
-        
-        # Convert the resized image back to bytes
         img_bytes_io = BytesIO()
         image.save(img_bytes_io, format='JPEG')
         image_bytes = img_bytes_io.getvalue()
@@ -59,17 +56,24 @@ if st.button("Submit"):
                     st.write("Top Matches:")
                     st.write(df)
 
+                    # Display uploaded image and matched image side by side
+                    col1, col2 = st.columns(2)
+
+                    with col1:
+                        st.image(file_path, caption='Uploaded Image', use_container_width=True)
+
                     # Extract UUID from the first match ID
                     first_match_id = matches[0]['id']
                     # Remove prefix and suffix
                     uuid = first_match_id.replace('1_staging/', '').replace('.nbg.jpg', '')
 
                     response = get_image_data(uuid)
-                    if response.status_code == 200:
-                        image = Image.open(BytesIO(response.content))
-                        st.image(image, caption='Raw Data Image', use_container_width=True)
-                    else:
-                        st.error("Failed to get raw data")
+                    with col2:
+                        if response.status_code == 200:
+                            image = Image.open(BytesIO(response.content))
+                            st.image(image, caption='Raw Data Image', use_container_width=True)
+                        else:
+                            st.error("Failed to get raw data")
                 else:
                     st.write("No matches found.")
             else:
