@@ -108,15 +108,22 @@ launch_streamlit.bat
 #### The streamlit UI contain three pages : 
 
 ![image](https://github.com/user-attachments/assets/ff7ce53a-9bef-4158-8d13-cd9ed60aff79)
+
 ___
 
 ![image](https://github.com/user-attachments/assets/9a3bddb0-1b63-4d5d-b5c0-e78228b57a66)
+
 ___
 
-![image](https://github.com/user-attachments/assets/df5bf957-e8c3-4d36-b309-ddc78d61280d)
+![image](https://github.com/user-attachments/assets/7e4d3cff-e5f5-4e40-9cd9-c5d6fd158e17)
+
 ___
 
-![image](https://github.com/user-attachments/assets/900d85ae-740c-4576-8ecd-faed1dda28f6)
+![image](https://github.com/user-attachments/assets/f4f26975-d43d-4793-8086-53f814fc7105)
+
+___
+
+![image](https://github.com/user-attachments/assets/15dae39f-7748-41df-bb9d-51ad3a09c978)
 
 ___
 
