@@ -6,13 +6,27 @@ This repository contains the final project for the Data Lakes & Data Integration
 
 ## Project Overview
 
-The objective of this project is to design and implement a complete data lake solution, from data ingestion to API exposure. The base dataset is constitued of 1800 pictures of pictures of about a dozen different celebrities. 
+The objective of this project is to design and implement a complete data lake solution, from data ingestion to API exposure. [The base dataset](https://www.kaggle.com/datasets/vishesh1412/celebrity-face-image-dataset) is constitued of 1800 pictures of pictures of eighteen different celebrities. 
 
-The datalake have three layer : "raw", "staging" and "curated". The raw layer contains all images, stored in a Google Blob Storage Bucket. The staging layer have the same architectures, but contains only faces cut out from pictures of the raw layer, in 224*224 pixels, jpg format. The last layer is the curated one, containing vectorial representation of all faces of the staging layer. The curated layer use PineCone cloud vector database. 
+The datalake have three layer : "raw", "staging" and "curated". 
+- The raw layer contains all images, stored in a Google Blob Storage Bucket. 
+- The staging layer have the same architectures, but contains only faces cut out from pictures of the raw layer, in 224*224 pixels, jpg format.
 
-The first operation from raw to staging mainly use U²-Net for image background removing (based on this [article](https://arxiv.org/pdf/2005.09007)), and also resize / format the images. The second operation from staging to curated use a VGG16 model minus classification top layers (in order to only capture features).
+  ![image](https://github.com/user-attachments/assets/a71dae57-3b34-42ee-8eb6-046a40d3b728)
 
-The ultimate goal of my pipeline is to be able to upload new pictures into the database, and be able to scan a picture to find the best already uploaded match. 
+- The last layer is the curated one, containing vectorial representation of all faces of the staging layer. The curated layer use PineCone cloud vector database.
+
+![image](https://github.com/user-attachments/assets/b9dffbe6-fab4-4be3-8ee0-727ddd9ade33)
+
+The first operation from raw to staging mainly use U²-Net for image background removing (based on this [article](https://arxiv.org/pdf/2005.09007)), and also resize / format the images. 
+
+![image](https://github.com/user-attachments/assets/1e8bf5d9-67e7-4b35-b312-b3721e3339ed)
+
+The second operation from staging to curated use a VGG16 model minus classification top layers (in order to only capture features). My output vector is of dimension 4096. I then normalize it and store it. 
+
+![image](https://github.com/user-attachments/assets/314c530f-c9b6-469c-885b-53c1f8bf5c1a)
+
+The ultimate goal of my pipeline is to be able to upload new pictures into the database, and be able to ingest a picture to find the best match among the database.
 
 ## Project Structure
 
@@ -65,6 +79,7 @@ ___
 - Apache Airflow
 - Streamlit
 
+___
 ### Installation
 
 1. Clone the repository:
@@ -82,12 +97,21 @@ ___
 
 4. Put your Google Storage JSON access credentials at root
 
+___
 ### Run Streamlit App
 
 In order to get the best experience, please prefer the use of the streamlit application. 
 ```bash
 launch_streamlit.bat
 ```
+
+#### The streamlit UI contain three pages : 
+
+![image](https://github.com/user-attachments/assets/9a3bddb0-1b63-4d5d-b5c0-e78228b57a66)
+
+
+
+___
 
 #### Execute Pipelines
 
