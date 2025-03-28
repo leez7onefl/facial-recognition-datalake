@@ -18,7 +18,7 @@ The datalake have three layer : "raw", "staging" and "curated".
 
 ![image](https://github.com/user-attachments/assets/b9dffbe6-fab4-4be3-8ee0-727ddd9ade33)
 
-The first operation from raw to staging mainly use U²-Net for image background removing (based on this [article](https://arxiv.org/pdf/2005.09007)), and also resize / format the images. 
+The first operation from raw to staging mainly use SCM-CNN(U²Net) model. It uses channel global average and max pooling for image background removal (based on this [article](https://arxiv.org/pdf/2005.09007)). Also force the image to be a .jpg and resize to 244*244 using Lanczos.
 
 ![image](https://github.com/user-attachments/assets/1e8bf5d9-67e7-4b35-b312-b3721e3339ed)
 
@@ -124,6 +124,30 @@ ___
 ___
 
 ![image](https://github.com/user-attachments/assets/15dae39f-7748-41df-bb9d-51ad3a09c978)
+
+___
+
+#### EDIT v2 : 
+
+First version hads't accomplished the original purpose I intended to create, wich is a datalake system able to compare a face to a pre-build database. 
+First version used a SCM-CNN(U²Net) model trained onto channels average, height, and width of pictures. 
+Second version now use dlib pre-trained model that is composed of a linear SVM trained on histogram of gradients in pictures [(see paper)](https://www.researchgate.net/profile/Mahdi-Jampour/publication/284367679_Efficient_Handwritten_Digit_Recognition_based_on_Histogram_of_Oriented_Gradients_and_SVM/links/575d3c8608ae9a9c9559f7a6/Efficient-Handwritten-Digit-Recognition-based-on-Histogram-of-Oriented-Gradients-and-SVM.pdf) for face detection only :
+
+![image](https://github.com/user-attachments/assets/76b52038-13ff-470c-aa03-d7d5a2040669)
+
+![image](https://github.com/user-attachments/assets/5a17f303-ce29-412b-89a0-8a26410259a6)
+
+![image](https://github.com/user-attachments/assets/d3e1a9a7-48eb-4925-9a25-781414f883ff)
+
+
+#### New results before storing in curated layer : 
+
+![image](https://github.com/user-attachments/assets/17ddf78c-a9db-42df-a567-8941c6cfd20c)
+
+![image](https://github.com/user-attachments/assets/fbc2af39-88a7-47bb-b6e7-6d288d935655)
+
+![image](https://github.com/user-attachments/assets/aa62a89f-e871-4870-8b08-3b877acd85d1)
+
 
 ___
 
